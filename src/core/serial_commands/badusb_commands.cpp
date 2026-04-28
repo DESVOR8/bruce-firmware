@@ -27,7 +27,7 @@ uint32_t badusbFileCallback(cmd *c) {
         return false;
     }
 
-#ifdef USB_as_HID
+#if defined(USB_as_HID) || defined(BADUSB_as_CH9329_ONLY)
     ducky_startKb(hid_usb, false);
     key_input(*fs, filepath, hid_usb);
     delete hid_usb;
