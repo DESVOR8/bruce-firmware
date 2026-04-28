@@ -60,7 +60,7 @@ uint32_t badusbBufferCallback(cmd *c) {
     f.close();
     free(txt);
 
-#ifdef USB_as_HID
+#if defined(USB_as_HID) || defined(BADUSB_as_CH9329_ONLY)
     ducky_startKb(hid_usb, false);
     key_input(PSRamFS, tmpfilepath, hid_usb);
     delete hid_usb;
