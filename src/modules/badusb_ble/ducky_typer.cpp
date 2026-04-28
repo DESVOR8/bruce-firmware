@@ -13,7 +13,7 @@
 uint8_t _Ask_for_restart = 0;
 int currentOutputY = 0;
 
-#if !defined(USB_as_HID)
+#if !defined(USB_as_HID) || defined(BADUSB_as_CH9329_ONLY)
 HardwareSerial mySerial(1);
 #endif
 
@@ -271,7 +271,7 @@ void ducky_setup(HIDInterface *&hid, bool ble) {
             if (returnToMenu) goto EXIT; // make sure to free the hid object before exiting
             first_time = false;
             if (!ble) {
-#if !defined(USB_as_HID)
+#if !defined(USB_as_HID) || defined(BADUSB_as_CH9329_ONLY)
                 mySerial.write(0x00);
                 while (mySerial.available() <= 0) {
                     if (mySerial.available() <= 0) {
