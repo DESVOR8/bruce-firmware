@@ -43,7 +43,7 @@ void SerialCli::setup() {
     createUtilCommands(&_cli);
     createWifiCommands(&_cli);
 
-#ifdef USB_as_HID
+#if defined(USB_as_HID) || defined(BADUSB_as_CH9329_ONLY)
     createBadUsbCommands(&_cli);
 #endif
 #ifndef LITE_VERSION
