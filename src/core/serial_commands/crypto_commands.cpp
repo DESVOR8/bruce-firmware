@@ -121,7 +121,7 @@ void createCryptoCommands(SimpleCLI *cli) {
     Command encryptFileCmd = cryptoCmd.addCommand("encrypt_to_file", encryptFileCallback);
     encryptFileCmd.addPosArg("filepath");
     encryptFileCmd.addPosArg("password");
-#ifdef USB_as_HID
+#if defined(USB_as_HID) || defined(BADUSB_as_CH9329_ONLY)
     Command typeFileCmd = cryptoCmd.addCommand("type_from_file", typeFileCallback);
     typeFileCmd.addPosArg("filepath");
     typeFileCmd.addPosArg("password");
